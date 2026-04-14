@@ -20,7 +20,9 @@
     --gray-light: #E8EAEF;
     --gray-dark: #1A1C24;
   }
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
+
   body {
     background: #F0F2F7;
     color: #1A1C24;
@@ -29,7 +31,6 @@
     overflow-x: hidden;
   }
 
-  /* GRID BG */
   body::before {
     content: '';
     position: fixed;
@@ -42,33 +43,43 @@
     z-index: 0;
   }
 
-  /* TOPBAR */
   .topbar {
-    position: sticky; top: 0; z-index: 100;
+    position: sticky;
+    top: 0;
+    z-index: 100;
     background: rgba(240,242,247,0.97);
     border-bottom: 2px solid var(--blue);
     padding: 0 32px;
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
     height: 64px;
     backdrop-filter: blur(12px);
     box-shadow: 0 0 40px rgba(0,0,250,0.10);
   }
+
   .gear-spin {
     animation: spinGear 4s linear infinite;
     flex-shrink: 0;
   }
+
   @keyframes spinGear {
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
 
+  .topbar-logo {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 28px;
     letter-spacing: 4px;
     color: #1A1C24;
-    display: flex; align-items: center; gap: 12px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
   }
+
   .topbar-logo span { color: var(--blue); }
+
   .topbar-badge {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -78,19 +89,27 @@
     border-radius: 2px;
     letter-spacing: 2px;
   }
+
   .topbar-right {
-    display: flex; align-items: center; gap: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
   }
+
   .topbar-date {
     font-family: 'Space Mono', monospace;
     font-size: 12px;
     color: var(--gray);
   }
 
-  /* MAIN */
-  .main { position: relative; z-index: 1; padding: 32px; max-width: 1600px; margin: 0 auto; }
+  .main {
+    position: relative;
+    z-index: 1;
+    padding: 32px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
 
-  /* SECTION TITLE */
   .section-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 13px;
@@ -99,13 +118,13 @@
     margin-bottom: 14px;
   }
 
-  /* KPI CARDS */
   .kpi-grid {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 16px;
     margin-bottom: 32px;
   }
+
   .kpi-card {
     background: rgba(0,0,250,0.07);
     border: 1px solid rgba(0,0,250,0.3);
@@ -115,15 +134,24 @@
     overflow: hidden;
     transition: border-color 0.2s, transform 0.2s;
   }
-  .kpi-card:hover { border-color: var(--blue); transform: translateY(-2px); }
+
+  .kpi-card:hover {
+    border-color: var(--blue);
+    transform: translateY(-2px);
+  }
+
   .kpi-card::after {
     content: '';
-    position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
     background: var(--blue);
   }
+
   .kpi-card.warn::after { background: var(--yellow); }
   .kpi-card.danger::after { background: var(--red); }
   .kpi-card.success::after { background: var(--green); }
+
   .kpi-label {
     font-size: 11px;
     letter-spacing: 2px;
@@ -131,23 +159,27 @@
     text-transform: uppercase;
     margin-bottom: 10px;
   }
+
   .kpi-val {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 42px;
     line-height: 1;
     color: #1A1C24;
   }
+
   .kpi-sub {
     font-size: 12px;
     color: var(--gray);
     margin-top: 6px;
   }
 
-  /* TABS */
   .tabs {
-    display: flex; gap: 4px; margin-bottom: 24px;
+    display: flex;
+    gap: 4px;
+    margin-bottom: 24px;
     border-bottom: 1px solid rgba(0,0,250,0.2);
   }
+
   .tab-btn {
     font-family: 'Rajdhani', sans-serif;
     font-size: 14px;
@@ -162,24 +194,38 @@
     transition: all 0.15s;
     text-transform: uppercase;
   }
+
   .tab-btn:hover { color: #1A1C24; }
+
   .tab-btn.active {
     color: var(--blue);
     border-bottom-color: var(--blue);
     background: rgba(0,0,250,0.07);
   }
 
-  /* SEARCH & FILTERS */
   .toolbar {
-    display: flex; align-items: center; gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
   }
+
   .search-wrap {
-    position: relative; flex: 1; min-width: 200px;
+    position: relative;
+    flex: 1;
+    min-width: 200px;
   }
+
   .search-icon {
-    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
-    color: var(--gray); font-size: 16px;
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--gray);
+    font-size: 16px;
   }
+
   .search-input {
     width: 100%;
     background: #ffffff;
@@ -192,6 +238,7 @@
     outline: none;
     transition: border-color 0.2s;
   }
+
   .search-input:focus { border-color: var(--blue); }
   .search-input::placeholder { color: var(--gray); }
 
@@ -207,7 +254,11 @@
     outline: none;
     cursor: pointer;
   }
-  select.filter-sel option { background: #ffffff; color: #1A1C24; }
+
+  select.filter-sel option {
+    background: #ffffff;
+    color: #1A1C24;
+  }
 
   .btn {
     font-family: 'Rajdhani', sans-serif;
@@ -220,39 +271,56 @@
     cursor: pointer;
     text-transform: uppercase;
     transition: all 0.15s;
-    display: inline-flex; align-items: center; gap: 6px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
   }
+
   .btn-primary { background: var(--blue); color: var(--white); }
   .btn-primary:hover { background: var(--blue-dark); }
+
   .btn-danger { background: var(--red); color: var(--white); }
   .btn-danger:hover { background: #c00020; }
+
   .btn-warning { background: var(--yellow); color: #000; }
   .btn-warning:hover { background: #e6c000; }
+
   .btn-success { background: var(--green); color: #000; }
   .btn-success:hover { background: #00a85c; }
+
   .btn-ghost {
     background: transparent;
     color: #3D4354;
     border: 1px solid rgba(0,0,0,0.15);
   }
-  .btn-ghost:hover { color: #1A1C24; border-color: #1A1C24; }
-  .btn-sm { padding: 5px 12px; font-size: 12px; }
 
-  /* TABLE */
+  .btn-ghost:hover {
+    color: #1A1C24;
+    border-color: #1A1C24;
+  }
+
+  .btn-sm {
+    padding: 5px 12px;
+    font-size: 12px;
+  }
+
   .table-wrap {
     overflow-x: auto;
     border-radius: 6px;
     border: 1px solid rgba(0,0,250,0.2);
   }
+
   table {
     width: 100%;
     border-collapse: collapse;
     font-size: 14px;
   }
+
   thead tr {
     background: rgba(0,0,250,0.08);
     border-bottom: 1px solid rgba(0,0,250,0.3);
   }
+
   th {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
@@ -264,15 +332,23 @@
     cursor: pointer;
     user-select: none;
   }
+
   th:hover { color: #1A1C24; }
+
   tbody tr {
     border-bottom: 1px solid rgba(0,0,0,0.07);
     transition: background 0.12s;
   }
+
   tbody tr:hover { background: rgba(0,0,250,0.08); }
   tbody tr.baja { opacity: 0.4; background: rgba(250,0,40,0.05); }
   tbody tr.selected { background: rgba(0,0,250,0.15); }
-  td { padding: 11px 14px; vertical-align: middle; white-space: nowrap; }
+
+  td {
+    padding: 11px 14px;
+    vertical-align: middle;
+    white-space: nowrap;
+  }
 
   .status-pill {
     display: inline-block;
@@ -282,17 +358,42 @@
     font-weight: 700;
     letter-spacing: 0.5px;
   }
-  .pill-active { background: rgba(0,201,110,0.15); color: var(--green); border: 1px solid rgba(0,201,110,0.3); }
-  .pill-baja { background: rgba(250,0,40,0.15); color: var(--red); border: 1px solid rgba(250,0,40,0.3); }
-  .pill-pending { background: rgba(255,214,0,0.15); color: var(--yellow); border: 1px solid rgba(255,214,0,0.3); }
-  .pill-sincontacto { background: rgba(144,153,170,0.15); color: var(--gray); border: 1px solid rgba(144,153,170,0.3); }
 
-  .no-data { color: var(--red); font-size: 12px; font-style: italic; }
+  .pill-active {
+    background: rgba(0,201,110,0.15);
+    color: var(--green);
+    border: 1px solid rgba(0,201,110,0.3);
+  }
+
+  .pill-baja {
+    background: rgba(250,0,40,0.15);
+    color: var(--red);
+    border: 1px solid rgba(250,0,40,0.3);
+  }
+
+  .pill-pending {
+    background: rgba(255,214,0,0.15);
+    color: var(--yellow);
+    border: 1px solid rgba(255,214,0,0.3);
+  }
+
+  .pill-sincontacto {
+    background: rgba(144,153,170,0.15);
+    color: var(--gray);
+    border: 1px solid rgba(144,153,170,0.3);
+  }
+
+  .no-data {
+    color: var(--red);
+    font-size: 12px;
+    font-style: italic;
+  }
+
   .has-data { color: var(--green); }
 
-  /* MODAL */
   .modal-overlay {
-    position: fixed; inset: 0;
+    position: fixed;
+    inset: 0;
     background: rgba(0,0,0,0.8);
     backdrop-filter: blur(6px);
     z-index: 999;
@@ -300,7 +401,9 @@
     align-items: center;
     justify-content: center;
   }
+
   .modal-overlay.open { display: flex; }
+
   .modal {
     background: #ffffff;
     border: 1px solid var(--blue);
@@ -311,10 +414,12 @@
     box-shadow: 0 0 60px rgba(0,0,250,0.15);
     animation: popIn 0.2s ease;
   }
+
   @keyframes popIn {
     from { transform: scale(0.9); opacity: 0; }
     to { transform: scale(1); opacity: 1; }
   }
+
   .modal h2 {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 24px;
@@ -322,14 +427,36 @@
     color: var(--red);
     margin-bottom: 8px;
   }
-  .modal p { font-size: 15px; color: #3D4354; margin-bottom: 24px; line-height: 1.5; }
-  .modal p strong { color: #1A1C24; }
-  .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
-  .modal-info { margin-bottom: 18px; }
-  .modal-info label {
-    display: block; font-size: 11px; letter-spacing: 2px; color: var(--gray); margin-bottom: 4px; text-transform: uppercase;
+
+  .modal p {
+    font-size: 15px;
+    color: #3D4354;
+    margin-bottom: 24px;
+    line-height: 1.5;
   }
-  select.modal-sel, textarea.modal-ta {
+
+  .modal p strong { color: #1A1C24; }
+
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  .modal-info { margin-bottom: 18px; }
+
+  .modal-info label {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--gray);
+    margin-bottom: 4px;
+    text-transform: uppercase;
+  }
+
+  select.modal-sel,
+  textarea.modal-ta,
+  input.modal-sel {
     width: 100%;
     background: #f5f6fa;
     border: 1px solid rgba(0,0,250,0.3);
@@ -341,15 +468,28 @@
     outline: none;
     resize: vertical;
   }
-  textarea.modal-ta { height: 80px; }
-  select.modal-sel option { background: #ffffff; color: #1A1C24; }
 
-  /* PAGINATION */
-  .pager {
-    display: flex; align-items: center; justify-content: space-between;
-    margin-top: 16px; font-size: 13px; color: var(--gray);
+  textarea.modal-ta { height: 80px; }
+
+  select.modal-sel option {
+    background: #ffffff;
+    color: #1A1C24;
   }
-  .pager-btns { display: flex; gap: 6px; }
+
+  .pager {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 16px;
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  .pager-btns {
+    display: flex;
+    gap: 6px;
+  }
+
   .pager-btn {
     background: #ffffff;
     border: 1px solid rgba(0,0,0,0.15);
@@ -360,15 +500,33 @@
     border-radius: 4px;
     cursor: pointer;
   }
-  .pager-btn:hover { background: rgba(0,0,250,0.2); border-color: var(--blue); }
-  .pager-btn.active-page { background: var(--blue); border-color: var(--blue); }
-  .pager-btn:disabled { opacity: 0.3; cursor: default; }
 
-  /* TOAST */
-  .toast-wrap {
-    position: fixed; bottom: 28px; right: 28px; z-index: 9999;
-    display: flex; flex-direction: column; gap: 10px;
+  .pager-btn:hover {
+    background: rgba(0,0,250,0.2);
+    border-color: var(--blue);
   }
+
+  .pager-btn.active-page {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
+  }
+
+  .pager-btn:disabled {
+    opacity: 0.3;
+    cursor: default;
+  }
+
+  .toast-wrap {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .toast {
     background: #ffffff;
     border-left: 4px solid var(--green);
@@ -380,11 +538,17 @@
     animation: slideIn 0.2s ease, fadeOut 0.3s ease 2.7s forwards;
     max-width: 300px;
   }
-  .toast.danger { border-left-color: var(--red); }
-  @keyframes slideIn { from { transform: translateX(40px); opacity: 0; } }
-  @keyframes fadeOut { to { opacity: 0; transform: translateX(40px); } }
 
-  /* DETAIL PANEL */
+  .toast.danger { border-left-color: var(--red); }
+
+  @keyframes slideIn {
+    from { transform: translateX(40px); opacity: 0; }
+  }
+
+  @keyframes fadeOut {
+    to { opacity: 0; transform: translateX(40px); }
+  }
+
   .detail-panel {
     background: rgba(0,0,250,0.05);
     border: 1px solid rgba(0,0,250,0.25);
@@ -393,22 +557,43 @@
     margin-bottom: 24px;
     display: none;
   }
-  .detail-panel.open { display: block; }
-  .detail-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
-  .detail-field label { font-size: 11px; letter-spacing: 2px; color: var(--blue); display: block; margin-bottom: 4px; }
-  .detail-field span { font-size: 15px; font-weight: 600; color: #1A1C24; }
 
-  /* CHARTS ROW */
+  .detail-panel.open { display: block; }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 16px;
+  }
+
+  .detail-field label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: var(--blue);
+    display: block;
+    margin-bottom: 4px;
+  }
+
+  .detail-field span {
+    font-size: 15px;
+    font-weight: 600;
+    color: #1A1C24;
+  }
+
   .charts-row {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 24px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
     margin-bottom: 32px;
   }
+
   .chart-card {
     background: rgba(0,0,250,0.06);
     border: 1px solid rgba(0,0,250,0.2);
     border-radius: 6px;
     padding: 22px;
   }
+
   .chart-title {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 15px;
@@ -416,25 +601,86 @@
     color: #1A1C24;
     margin-bottom: 18px;
   }
-  .bar-chart { display: flex; flex-direction: column; gap: 10px; }
-  .bar-row { display: flex; align-items: center; gap: 12px; }
-  .bar-label { font-size: 12px; color: var(--gray); width: 130px; flex-shrink: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-  .bar-track { flex: 1; height: 8px; background: rgba(0,0,0,0.08); border-radius: 4px; overflow: hidden; }
-  .bar-fill { height: 100%; background: var(--blue); border-radius: 4px; transition: width 0.6s ease; }
-  .bar-val { font-family: 'Space Mono', monospace; font-size: 11px; color: #1A1C24; width: 28px; text-align: right; }
 
-  .donut-wrap { display: flex; align-items: center; gap: 28px; }
-  .donut-legend { flex: 1; display: flex; flex-direction: column; gap: 10px; }
-  .legend-item { display: flex; align-items: center; gap: 10px; font-size: 13px; }
-  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .bar-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 
-  .tab-content { display: none; }
-  .tab-content.active { display: block; }
+  .bar-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
 
-  /* Checkbox */
-  .row-check { cursor: pointer; accent-color: var(--blue); width: 15px; height: 15px; }
+  .bar-label {
+    font-size: 12px;
+    color: var(--gray);
+    width: 130px;
+    flex-shrink: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
 
-  /* Bulk bar */
+  .bar-track {
+    flex: 1;
+    height: 8px;
+    background: rgba(0,0,0,0.08);
+    border-radius: 4px;
+    overflow: hidden;
+  }
+
+  .bar-fill {
+    height: 100%;
+    background: var(--blue);
+    border-radius: 4px;
+    transition: width 0.6s ease;
+  }
+
+  .bar-val {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: #1A1C24;
+    width: 28px;
+    text-align: right;
+  }
+
+  .donut-wrap {
+    display: flex;
+    align-items: center;
+    gap: 28px;
+  }
+
+  .donut-legend {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .legend-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 13px;
+  }
+
+  .legend-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .row-check {
+    cursor: pointer;
+    accent-color: var(--blue);
+    width: 15px;
+    height: 15px;
+  }
+
   .bulk-bar {
     display: none;
     align-items: center;
@@ -447,6 +693,7 @@
     font-size: 14px;
     font-weight: 600;
   }
+
   .bulk-bar.visible { display: flex; }
   .bulk-bar span { color: var(--gray); }
   .bulk-bar strong { color: #1A1C24; }
@@ -476,8 +723,6 @@
 </div>
 
 <div class="main">
-
-  <!-- KPIs -->
   <div class="section-title">▸ INDICADORES GENERALES</div>
   <div class="kpi-grid">
     <div class="kpi-card">
@@ -507,7 +752,6 @@
     </div>
   </div>
 
-  <!-- CHARTS -->
   <div class="charts-row">
     <div class="chart-card">
       <div class="chart-title">◈ PROSPECTOS POR MUNICIPIO</div>
@@ -522,7 +766,6 @@
     </div>
   </div>
 
-  <!-- TABS -->
   <div class="tabs">
     <button class="tab-btn active" onclick="switchTab('todos')">Todos</button>
     <button class="tab-btn" onclick="switchTab('activos')">Activos</button>
@@ -531,7 +774,6 @@
     <button class="tab-btn" onclick="switchTab('sinTel')">Sin Teléfono</button>
   </div>
 
-  <!-- DETAIL PANEL -->
   <div class="detail-panel" id="detailPanel">
     <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;">
       <span style="font-family:'Bebas Neue';font-size:18px;letter-spacing:3px;color:var(--blue)">◈ DETALLE DE PROSPECTO</span>
@@ -541,7 +783,6 @@
     <div style="display:flex;gap:10px;margin-top:20px;" id="detailActions"></div>
   </div>
 
-  <!-- TOOLBAR -->
   <div class="toolbar">
     <div class="search-wrap">
       <span class="search-icon">🔍</span>
@@ -557,7 +798,6 @@
     <button class="btn btn-primary btn-sm" onclick="abrirAnadir()">＋ Añadir Empresa</button>
   </div>
 
-  <!-- BULK BAR -->
   <div class="bulk-bar" id="bulkBar">
     <strong id="bulkCount">0</strong><span>seleccionados</span>
     <button class="btn btn-danger btn-sm" onclick="bajaSeleccionados()">⛔ Dar de Baja</button>
@@ -565,7 +805,6 @@
     <button class="btn btn-ghost btn-sm" onclick="deseleccionarTodo()">✕ Limpiar selección</button>
   </div>
 
-  <!-- TABLE -->
   <div class="table-wrap">
     <table id="mainTable">
       <thead>
@@ -586,14 +825,12 @@
     </table>
   </div>
 
-  <!-- PAGINATION -->
   <div class="pager">
     <span id="pagerInfo"></span>
     <div class="pager-btns" id="pagerBtns"></div>
   </div>
 </div>
 
-<!-- MODAL BAJA -->
 <div class="modal-overlay" id="modalBaja">
   <div class="modal">
     <h2>⛔ DAR DE BAJA</h2>
@@ -621,7 +858,6 @@
   </div>
 </div>
 
-<!-- MODAL EDITAR -->
 <div class="modal-overlay" id="modalEditar">
   <div class="modal" style="max-width:520px;">
     <h2 style="color:var(--blue);">✏ EDITAR PROSPECTO</h2>
@@ -657,7 +893,6 @@
   </div>
 </div>
 
-<!-- MODAL AÑADIR EMPRESA -->
 <div class="modal-overlay" id="modalAnadir">
   <div class="modal" style="max-width:560px;">
     <h2 style="color:var(--blue);">＋ AÑADIR EMPRESA</h2>
@@ -717,7 +952,6 @@
   </div>
 </div>
 
-<!-- TOASTS -->
 <div class="toast-wrap" id="toastWrap"></div>
 
 <script>
@@ -725,66 +959,15 @@
 // CONFIG GOOGLE SHEETS
 // ============================================================
 const SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vROdE0kaeIuLM9h0DZutIAu0hpnJgUncB67aChQbf7YdM1p_aqqh65_SVQ_3vbLsmWQ9H19SKj0AuyC/pub?gid=282220580&single=true&output=csv';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyMo7OoAxJ6PjYKAth5QGwYTRZPSMNbGDYFS9DRWnpN-pIjPYYlvMPTMW0mw2cTzzC1/exec';
 
 // ============================================================
 // DATA
 // ============================================================
-let allData = [
-  // ---- ARLETTE SHEET ----
-  {id:1, empresa:"FRUITEX DE MEXICO S.A.P.I. DE C.V.", estado:"MEXICO", municipio:"LERMA", nombre:"ANGEL MARTINEZ S", telefono:"7282850363", correo:"angel.martinez@fruitex.mx", etapa:"", fuente:"ARLETTE"},
-  {id:2, empresa:"GANADEROS PRODUCTORES DE LECHE PURA SAPI DE C.V.", estado:"MEXICO", municipio:"CUAUTITLAN IZCALLI", nombre:"VICENTE HERNANDEZ HURTADO", telefono:"5899 2000", correo:"vihernandez@alpura.com", etapa:"", fuente:"ARLETTE"},
-  {id:3, empresa:"GRUPO EMPRESARIAL ALAN", estado:"MEXICO", municipio:"TOLUCA", nombre:"YETZA G. CORTES", telefono:"722.228.0186", correo:"gpoemp.ivone@gmail.com", etapa:"", fuente:"ARLETTE"},
-  {id:4, empresa:"GRUPO INDUSTRIAL MIRO", estado:"MEXICO", municipio:"LERMA", nombre:"MITSHUO CARREÑO A", telefono:"(728) 2 82 75 17", correo:"compras@grupomiro.com", etapa:"", fuente:"ARLETTE"},
-  {id:5, empresa:"GRUPO INDUSTRIAL MODELO S.A. C.V.", estado:"MEXICO", municipio:"SAN MATEO ATENCO", nombre:"JANETE MONTOYA ESCOBEDO", telefono:"722 3184401", correo:"janet.acraf@gmail.com", etapa:"", fuente:"ARLETTE"},
-  {id:6, empresa:"ICE MART", estado:"MEXICO", municipio:"ATIZAPAN DE ZARAGOZA", nombre:"ALEJANDRO SOTO", telefono:"558 034 6392", correo:"ice@icemart.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:7, empresa:"INDUSTRIALIZADORA JUMS DE MEXICO S.A DE C.V.", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"JESUS LOPEZ SOLORIO", telefono:"57558470", correo:"yolandaalfarog@prodigy.net.mx", etapa:"", fuente:"ARLETTE"},
-  {id:8, empresa:"INDUSTRIAS BUIN MOR", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"GERARDO CORDERO", telefono:"5557905574", correo:"gcordero@buinmor.com", etapa:"", fuente:"ARLETTE"},
-  {id:9, empresa:"JUGOMEX", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"FABIOLA HINOJOSA OLGUIN", telefono:"56991999", correo:"fhinojosao@jumex.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:10, empresa:"JUGOMEX", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"EFREN ROJAS LARA", telefono:"56991999", correo:"erojasl@jumex.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:11, empresa:"JUGOMEX", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"MARIO MARTINEZ", telefono:"56991999", correo:"mmartinezv@jumex.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:12, empresa:"JUGOMEX", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"MACARIO ALVAREZ SANTIAGO", telefono:"58363636", correo:"malvarezs@jumex.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:13, empresa:"LACTEOS LA PILARICA", estado:"MEXICO", municipio:"IXTAPALUCA", nombre:"—", telefono:"", correo:"", etapa:"", fuente:"ARLETTE"},
-  {id:14, empresa:"LAMITUBO", estado:"MEXICO", municipio:"LERMA", nombre:"LUIS CORONA RIVERA", telefono:"722 262 04 40 EXT. 8316", correo:"lerma.compras@pmsteele.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:15, empresa:"NATURAFRUT BAUTISTA", estado:"MEXICO", municipio:"TLALNEPANTLA DE BAZ", nombre:"SAMUEL ORLANDO SANTIAGO BUENAFE", telefono:"962 165 7569", correo:"samo.sanbu@gmail.com", etapa:"", fuente:"ARLETTE"},
-  {id:16, empresa:"NATURAFRUT BAUTISTA S.P.R. DE R.L. DE C.", estado:"MEXICO", municipio:"TLALNEPANTLA DE BAZ", nombre:"DECSI YATSEL LAPARRA RAMIREZ", telefono:"9626264925", correo:"compras@mangosoconusco.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:17, empresa:"PRESTAL MEXICANA", estado:"MEXICO", municipio:"TLALNEPANTLA DE BAZ", nombre:"—", telefono:"", correo:"", etapa:"", fuente:"ARLETTE"},
-  {id:18, empresa:"SATEX TEXTIL", estado:"MEXICO", municipio:"LERMA", nombre:"GUILLERMO MENDOZA", telefono:"", correo:"mantenimiento@satext.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:19, empresa:"SEÑOR PISTACHO", estado:"MEXICO", municipio:"CHALCO", nombre:"—", telefono:"", correo:"", etapa:"", fuente:"ARLETTE"},
-  {id:20, empresa:"THE KLASS COMPANY", estado:"MEXICO", municipio:"TEPOTZOTLAN", nombre:"RICARDO SANTANA", telefono:"XXX", correo:"ricardo.santana@klassco.com", etapa:"", fuente:"ARLETTE"},
-  {id:21, empresa:"CONSERVAS LA COSTEÑA S.A DE C.V", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"CARLOS GEOVANNI GONZALEZ MIRANDA", telefono:"5558363636", correo:"CARLOS.GONZALEZ@LACOSTENA.COM.MX", etapa:"", fuente:"ARLETTE"},
-  {id:22, empresa:"CONSERVAS LA COSTEÑA S.A DE C.V", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"MARCO ANTONIO ROSALES GUERRERO", telefono:"58363636", correo:"marco.rosales@lacostena.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:23, empresa:"CONSERVAS LA COSTEÑA S.A DE C.V", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"GABRIELA MARTINEZ GARCIA", telefono:"58363636", correo:"gabriela.martinez@lacostena.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:24, empresa:"CONSERVAS LA COSTEÑA S.A DE C.V", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"PEDRO SANCHEZ V", telefono:"58363636", correo:"pedro.sanchez@lacostena.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:25, empresa:"EMBOTELLADORA MEXICANA", estado:"MEXICO", municipio:"TULTITLAN", nombre:"JUAN FERNANDO BARCENAS", telefono:"55 5899 4246", correo:"juan.barcenas@agamexico.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:26, empresa:"EMBOTELLADORA MEXICANA", estado:"MEXICO", municipio:"TULTITLAN", nombre:"JUAN BARCENAS X", telefono:"55 58 99 42 50", correo:"juan.barceras@agademexico.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:27, empresa:"EMBOTELLADORA MEXICANA", estado:"MEXICO", municipio:"TULTITLAN", nombre:"EDUARDO MEDINA CASTILLO", telefono:"58994246", correo:"eduardo.medina@agamexico.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:28, empresa:"EMBOTELLADORA MEXICANA -S .A. DE C.V.", estado:"MEXICO", municipio:"TULTITLAN", nombre:"GUILLERMO VAZQUEZ MAYORGA", telefono:"55 58 99 42 46", correo:"guillermo.vazquez@agamexico.com.mx", etapa:"", fuente:"ARLETTE"},
-  {id:29, empresa:"EMPAQUES MODERNOS SAN PABLO S. DE R.L. DE C.V.", estado:"MEXICO", municipio:"TLALNEPANTLA DE BAZ", nombre:"ARACELI FONG HERRERA", telefono:"5318 8800", correo:"araceli.fong@grupogondi.com", etapa:"", fuente:"ARLETTE"},
-  {id:30, empresa:"ENVASES UNIVERSALES DE MEXICO SAPI DE C.V.", estado:"MEXICO", municipio:"CUAUTITLAN", nombre:"YANIN ALEJANDRA VALDEZ", telefono:"332842857-2857", correo:"yanin.valdez@envases.mx", etapa:"", fuente:"ARLETTE"},
-  // ---- BD SHEET ----
-  {id:31, empresa:"ACEROS TURIA", estado:"MEXICO", municipio:"ATIZAPAN DE ZARAGOZA", nombre:"JOSÉ LIMBER GOMEZ RIOS", telefono:"5560669708", correo:"jose.limber@aceros-turia.com", etapa:"5-Correo enviado", fuente:"BD"},
-  {id:32, empresa:"AGROPECUARIA CUBU", estado:"MEXICO", municipio:"ZUMPANGO", nombre:"ARACELI LEON", telefono:"15919185137", correo:"admin@ranchoensueno.mx", etapa:"", fuente:"BD"},
-  {id:33, empresa:"ARABELA", estado:"MEXICO", municipio:"TOLUCA", nombre:"VIRGINIA REYES ALVAREZ", telefono:"7222755100", correo:"virginia.reyes@arabela.com", etapa:"", fuente:"BD"},
-  {id:34, empresa:"CARREDANA DE EMPAQUES S.A. C.V.", estado:"MEXICO", municipio:"LERMA", nombre:"NOHEMI MARTINEZ CEDILLO", telefono:"7282850366", correo:"compras3@cadesa.com.mx", etapa:"", fuente:"BD"},
-  {id:35, empresa:"CARTOCAJAS Y ESPECIALIDADES", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"CARLOS CANO SANCHEZ", telefono:"57889350", correo:"mtto@cartocajas.com", etapa:"", fuente:"BD"},
-  {id:36, empresa:"CHOCOLATERA SALVATIERRA", estado:"MEXICO", municipio:"NAUCALPAN DE JUÁREZ", nombre:"FERNANDO CRUZ", telefono:"5300 9808", correo:"info@chocolaterasalvatierra.com", etapa:"", fuente:"BD"},
-  {id:37, empresa:"CONSERVAS LA COSTEÑA S.A DE C.V", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"CARLOS GEOVANNI GONZALEZ MIRANDA", telefono:"5558363636", correo:"CARLOS.GONZALEZ@LACOSTENA.COM.MX", etapa:"", fuente:"BD"},
-  {id:38, empresa:"CONTROLES Y SERVICIOS S.A.", estado:"MEXICO", municipio:"ATIZAPAN DE ZARAGOZA", nombre:"ANTONIA MARTINEZ X", telefono:"58 24 36 42", correo:"tony@controlesyservicios.com.mx", etapa:"", fuente:"BD"},
-  {id:39, empresa:"EMBOTELLADORA MEXICANA", estado:"MEXICO", municipio:"TULTITLAN", nombre:"JUAN FERNANDO BARCENAS", telefono:"55 5899 4246", correo:"juan.barcenas@agamexico.com.mx", etapa:"", fuente:"BD"},
-  {id:40, empresa:"EMPAQUES MODERNOS SAN PABLO S. DE R.L. DE C.V.", estado:"MEXICO", municipio:"TLALNEPANTLA DE BAZ", nombre:"ARACELI FONG HERRERA", telefono:"5318 8800", correo:"araceli.fong@grupogondi.com", etapa:"", fuente:"BD"},
-  {id:41, empresa:"ENVASES UNIVERSALES DE MEXICO SAPI DE C.V.", estado:"MEXICO", municipio:"CUAUTITLAN", nombre:"YANIN ALEJANDRA VALDEZ", telefono:"332842857-2857", correo:"yanin.valdez@envases.mx", etapa:"", fuente:"BD"},
-  {id:42, empresa:"EVENFLO MEXICO", estado:"MEXICO", municipio:"CUAUTITLAN IZCALLI", nombre:"CHRISTIAN ALAN CARRANZA", telefono:"5540783416", correo:"ChristianAlan.Carranza@kcc.com", etapa:"", fuente:"BD"},
-  {id:43, empresa:"FABRICA DE CAJAS CAESA", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"CARLOS CANO SANCHEZ", telefono:"5512882761", correo:"mtto@cartocajas.com", etapa:"", fuente:"BD"},
-  {id:44, empresa:"FABRICA DE JABON LA CORONA", estado:"MEXICO", municipio:"ECATEPEC DE MORELOS", nombre:"HÉCTOR RAMIREZ TORRES", telefono:"57476474", correo:"hramirezt@lacorona.com.mx", etapa:"", fuente:"BD"},
-  {id:45, empresa:"FIS FIBER INDUSTRIES", estado:"MEXICO", municipio:"NAUCALPAN DE JUÁREZ", nombre:"VIRGINIA MARTINEZ X", telefono:"55 26 29 72 20", correo:"compras@fisfiber.com.mx", etapa:"", fuente:"BD"},
-  {id:46, empresa:"FIS FIBER INDUSTRIES", estado:"MEXICO", municipio:"NAUCALPAN DE JUÁREZ", nombre:"—", telefono:"", correo:"", etapa:"", fuente:"BD"},
-  {id:47, empresa:"FLUOTEC S.A. P.I. DE C.V.", estado:"MEXICO", municipio:"NAUCALPAN DE JUÁREZ", nombre:"ERIKA LOPEZ X", telefono:"5000 9480", correo:"erika@fluotec.com", etapa:"", fuente:"BD"},
-];
-
-// Persistent state
-let estados = {}; // id -> {baja:bool, motivo:'', notas:'', tel:'', correo:'', etapa:''}
+let allData = [];
+let estados = {};
 let currentTab = 'todos';
-let currentSort = {col:null, dir:1};
+let currentSort = { col: null, dir: 1 };
 let currentPage = 1;
 const PAGE_SIZE = 15;
 let filteredData = [];
@@ -792,156 +975,192 @@ let selectedIds = new Set();
 let pendingBajaId = null;
 let pendingEditId = null;
 
-// Reload from Sheets without losing localStorage states
+// ============================================================
+// HELPERS API
+// ============================================================
+async function postToAppsScript(payload) {
+  const resp = await fetch(APPS_SCRIPT_URL, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'text/plain;charset=utf-8'
+    },
+    body: JSON.stringify(payload)
+  });
+
+  const result = await resp.json();
+
+  if (!result.ok) {
+    throw new Error(result.error || 'Error al guardar en Google Sheets');
+  }
+
+  return result;
+}
+
+function reconstruirFiltros() {
+  const mSel = document.getElementById('filterMunicipio');
+  const eSel = document.getElementById('filterEstado');
+
+  const municipioActual = mSel.value;
+  const estadoActual = eSel.value;
+
+  const munis = [...new Set(allData.map(r => r.municipio).filter(Boolean))].sort();
+  const estds = [...new Set(allData.map(r => r.estado).filter(Boolean))].sort();
+
+  mSel.innerHTML = '<option value="">Todos los municipios</option>';
+  eSel.innerHTML = '<option value="">Todos los estados</option>';
+
+  munis.forEach(m => {
+    const o = document.createElement('option');
+    o.value = m;
+    o.textContent = m;
+    mSel.appendChild(o);
+  });
+
+  estds.forEach(e => {
+    const o = document.createElement('option');
+    o.value = e;
+    o.textContent = e;
+    eSel.appendChild(o);
+  });
+
+  if (munis.includes(municipioActual)) mSel.value = municipioActual;
+  if (estds.includes(estadoActual)) eSel.value = estadoActual;
+}
+
+function mapRowsFromSheet(rows) {
+  const headers = rows[0].map(h => h.trim().toLowerCase());
+  const idx = k => headers.indexOf(k);
+
+  return rows.slice(1)
+    .filter(r => r.some(c => String(c).trim()))
+    .map((r, i) => ({
+      id: i + 1,
+      empresa: (r[idx('empresa')] || '').trim(),
+      estado: (r[idx('estado')] || '').trim(),
+      municipio: (r[idx('municipio')] || '').trim(),
+      nombre: (r[idx('nombre')] || '').trim(),
+      telefono: (r[idx('telefono')] || '').trim(),
+      correo: (r[idx('correo')] || '').trim(),
+      etapa: (r[idx('etapa')] || '').trim(),
+      fuente: (r[idx('fuente')] || '').trim(),
+      estatus: (r[idx('estatus')] || '').trim(),
+      motivoBaja: (r[idx('motivo baja')] || '').trim(),
+      fechaBaja: (r[idx('fecha baja')] || '').trim(),
+      observaciones: (r[idx('observaciones')] || '').trim(),
+      ultimaActualizacion: (r[idx('ultima actualización')] || '').trim()
+    }));
+}
+
+// ============================================================
+// LOAD
+// ============================================================
 async function recargarSheets() {
   toast('🔄 Recargando desde Google Sheets…');
+
   try {
     const resp = await fetch(SHEET_CSV_URL + '&t=' + Date.now());
     if (!resp.ok) throw new Error();
+
     const text = await resp.text();
     const rows = parseCSV(text);
+
     if (rows.length > 1) {
-      const headers = rows[0].map(h => h.trim().toLowerCase());
-      const idx = k => headers.indexOf(k);
-      const newData = rows.slice(1)
-        .filter(r => r.some(c => c.trim()))
-        .map((r, i) => ({
-          id: i + 1,
-          empresa:   (r[idx('empresa')]   || '').trim(),
-          estado:    (r[idx('estado')]    || '').trim(),
-          municipio: (r[idx('municipio')] || '').trim(),
-          nombre:    (r[idx('nombre')]    || '').trim(),
-          telefono:  (r[idx('telefono')]  || '').trim(),
-          correo:    (r[idx('correo')]    || '').trim(),
-          etapa:     (r[idx('etapa')]     || '').trim(),
-          fuente:    (r[idx('fuente')]    || '').trim(),
-        }));
-      // Keep manual entries
-      const manuales = allData.filter(r => r.fuente === 'MANUAL');
-      const maxId = Math.max(...newData.map(r=>r.id), 0);
-      manuales.forEach((r, i) => { r.id = maxId + i + 1; });
-      allData = [...newData, ...manuales];
-      // Rebuild filters
-      const mSel = document.getElementById('filterMunicipio');
-      const eSel = document.getElementById('filterEstado');
-      const munis = [...new Set(allData.map(r=>r.municipio))].sort();
-      const estds = [...new Set(allData.map(r=>r.estado))].sort();
-      mSel.innerHTML = '<option value="">Todos los municipios</option>';
-      munis.forEach(m => { const o=document.createElement('option'); o.value=m; o.textContent=m; mSel.appendChild(o); });
-      eSel.innerHTML = '<option value="">Todos los estados</option>';
-      estds.forEach(e => { const o=document.createElement('option'); o.value=e; o.textContent=e; eSel.appendChild(o); });
+      allData = mapRowsFromSheet(rows);
+      reconstruirFiltros();
       actualizarKPIs();
       renderCharts();
       filtrarTabla();
-      toast(`✔ ${newData.length} prospectos actualizados desde Sheets`);
+      toast(`✔ ${allData.length} prospectos actualizados desde Sheets`);
     }
-  } catch(e) {
+  } catch (e) {
     toast('⚠ No se pudo conectar a Google Sheets', true);
   }
 }
 
-// ============================================================
-// INIT — carga datos desde Google Sheets
-// ============================================================
 async function init() {
-  // Load estados from localStorage
-  try {
-    const saved = localStorage.getItem('crm_estados_cdmx');
-    if (saved) estados = JSON.parse(saved);
-  } catch(e) {}
+  document.getElementById('topbarDate').textContent = new Date().toLocaleDateString('es-MX', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric'
+  });
 
-  // Date
-  document.getElementById('topbarDate').textContent = new Date().toLocaleDateString('es-MX', {weekday:'long',year:'numeric',month:'long',day:'numeric'});
-
-  // Show loading indicator
-  document.getElementById('tableBody').innerHTML = `<tr><td colspan="10" style="text-align:center;padding:40px;color:var(--gray);">⏳ Cargando datos desde Google Sheets…</td></tr>`;
+  document.getElementById('tableBody').innerHTML =
+    `<tr><td colspan="10" style="text-align:center;padding:40px;color:var(--gray);">⏳ Cargando datos desde Google Sheets…</td></tr>`;
 
   try {
-    const resp = await fetch(SHEET_CSV_URL);
+    const resp = await fetch(SHEET_CSV_URL + '&t=' + Date.now());
     if (!resp.ok) throw new Error('No se pudo conectar');
+
     const text = await resp.text();
     const rows = parseCSV(text);
+
     if (rows.length > 1) {
-      const headers = rows[0].map(h => h.trim().toLowerCase());
-      const idx = k => headers.indexOf(k);
-      allData = rows.slice(1)
-        .filter(r => r.some(c => c.trim()))
-        .map((r, i) => ({
-          id: i + 1,
-          empresa:   (r[idx('empresa')]   || '').trim(),
-          estado:    (r[idx('estado')]    || '').trim(),
-          municipio: (r[idx('municipio')] || '').trim(),
-          nombre:    (r[idx('nombre')]    || '').trim(),
-          telefono:  (r[idx('telefono')]  || '').trim(),
-          correo:    (r[idx('correo')]    || '').trim(),
-          etapa:     (r[idx('etapa')]     || '').trim(),
-          fuente:    (r[idx('fuente')]    || '').trim(),
-        }));
+      allData = mapRowsFromSheet(rows);
       toast(`✔ ${allData.length} prospectos cargados desde Google Sheets`);
     }
-  } catch(e) {
+  } catch (e) {
     toast('⚠ Sin conexión a Sheets, usando datos locales', true);
   }
 
-  // Load manually added companies
-  try {
-    const savedEmpresas = localStorage.getItem('crm_empresas_nuevas');
-    if (savedEmpresas) {
-      const extras = JSON.parse(savedEmpresas);
-      const maxId = Math.max(...allData.map(r=>r.id), 0);
-      extras.forEach((r, i) => {
-        r.id = maxId + i + 1;
-        allData.push(r);
-      });
-    }
-  } catch(e) {}
-
-  poblarFiltros();
+  reconstruirFiltros();
   actualizarKPIs();
   renderCharts();
   filtrarTabla();
 }
 
-// CSV parser (maneja comas dentro de comillas)
+// ============================================================
+// CSV PARSER
+// ============================================================
 function parseCSV(text) {
   const rows = [];
   const lines = text.split(/\r?\n/);
+
   for (const line of lines) {
     if (!line.trim()) continue;
+
     const cols = [];
-    let cur = '', inQ = false;
+    let cur = '';
+    let inQ = false;
+
     for (let i = 0; i < line.length; i++) {
       const ch = line[i];
+
       if (ch === '"') {
-        if (inQ && line[i+1] === '"') { cur += '"'; i++; }
-        else inQ = !inQ;
+        if (inQ && line[i + 1] === '"') {
+          cur += '"';
+          i++;
+        } else {
+          inQ = !inQ;
+        }
       } else if (ch === ',' && !inQ) {
-        cols.push(cur); cur = '';
+        cols.push(cur);
+        cur = '';
       } else {
         cur += ch;
       }
     }
+
     cols.push(cur);
     rows.push(cols);
   }
+
   return rows;
 }
 
-function save() {
-  try { localStorage.setItem('crm_estados_cdmx', JSON.stringify(estados)); } catch(e){}
-  try { localStorage.setItem('crm_empresas_nuevas', JSON.stringify(allData.filter(r=>r.fuente==='MANUAL'))); } catch(e){}
-}
-
-function getRow(id) { return allData.find(r=>r.id===id); }
-function getEstado(id) { return estados[id] || {baja:false, motivo:'', notas:'', tel:'', correo:'', etapa:''}; }
-
-function effectiveTel(r) { return getEstado(r.id).tel || r.telefono || ''; }
-function effectiveCorreo(r) { return getEstado(r.id).correo || r.correo || ''; }
-function effectiveEtapa(r) { return getEstado(r.id).etapa || r.etapa || ''; }
-function isBaja(r) { return getEstado(r.id).baja === true; }
+// ============================================================
+// BASIC HELPERS
+// ============================================================
+function save() {}
+function getRow(id) { return allData.find(r => r.id === id); }
+function getEstado(id) { return estados[id] || {}; }
+function effectiveTel(r) { return r.telefono || ''; }
+function effectiveCorreo(r) { return r.correo || ''; }
+function effectiveEtapa(r) { return r.etapa || ''; }
+function isBaja(r) { return String(r.estatus || '').trim().toUpperCase() === 'BAJA'; }
 
 // ============================================================
-// KPIs
+// KPIS
 // ============================================================
 function actualizarKPIs() {
   const total = allData.length;
@@ -949,6 +1168,7 @@ function actualizarKPIs() {
   const activos = total - baja;
   const sinCorreo = allData.filter(r => !isBaja(r) && !effectiveCorreo(r)).length;
   const sinTel = allData.filter(r => !isBaja(r) && !effectiveTel(r)).length;
+
   document.getElementById('kpiTotal').textContent = total;
   document.getElementById('kpiActivos').textContent = activos;
   document.getElementById('kpiBaja').textContent = baja;
@@ -960,41 +1180,51 @@ function actualizarKPIs() {
 // CHARTS
 // ============================================================
 function renderCharts() {
-  // Bar chart: por municipio (top 8)
   const activos = allData.filter(r => !isBaja(r));
+
   const muniMap = {};
-  activos.forEach(r => { muniMap[r.municipio] = (muniMap[r.municipio]||0)+1; });
-  const sorted = Object.entries(muniMap).sort((a,b)=>b[1]-a[1]).slice(0,8);
+  activos.forEach(r => {
+    muniMap[r.municipio] = (muniMap[r.municipio] || 0) + 1;
+  });
+
+  const sorted = Object.entries(muniMap).sort((a, b) => b[1] - a[1]).slice(0, 8);
   const max = sorted[0]?.[1] || 1;
   const barContainer = document.getElementById('chartMunicipio');
-  barContainer.innerHTML = sorted.map(([muni,cnt]) => `
+
+  barContainer.innerHTML = sorted.map(([muni, cnt]) => `
     <div class="bar-row">
       <div class="bar-label" title="${muni}">${muni}</div>
-      <div class="bar-track"><div class="bar-fill" style="width:${(cnt/max*100).toFixed(1)}%"></div></div>
+      <div class="bar-track"><div class="bar-fill" style="width:${(cnt / max * 100).toFixed(1)}%"></div></div>
       <div class="bar-val">${cnt}</div>
     </div>
   `).join('');
 
-  // Donut: por estado
   const estadoMap = {};
-  activos.forEach(r => { estadoMap[r.estado] = (estadoMap[r.estado]||0)+1; });
-  const estadoList = Object.entries(estadoMap).sort((a,b)=>b[1]-a[1]);
-  const colors = ['#0000FA','#00C96E','#FFD600','#FA0028','#9099AA'];
+  activos.forEach(r => {
+    estadoMap[r.estado] = (estadoMap[r.estado] || 0) + 1;
+  });
+
+  const estadoList = Object.entries(estadoMap).sort((a, b) => b[1] - a[1]);
+  const colors = ['#0000FA', '#00C96E', '#FFD600', '#FA0028', '#9099AA'];
   const totalD = activos.length || 1;
   let offset = 0;
   const r = 40, cx = 60, cy = 60;
-  const circ = 2*Math.PI*r;
+  const circ = 2 * Math.PI * r;
+
   const paths = estadoList.map(([est, cnt], i) => {
-    const pct = cnt/totalD;
+    const pct = cnt / totalD;
     const dash = pct * circ;
-    const path = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${colors[i%colors.length]}" stroke-width="18" stroke-dasharray="${dash} ${circ-dash}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})"/>`;
+    const path = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${colors[i % colors.length]}" stroke-width="18" stroke-dasharray="${dash} ${circ - dash}" stroke-dashoffset="${-offset}" transform="rotate(-90 ${cx} ${cy})"/>`;
     offset += dash;
     return path;
   }).join('');
-  document.getElementById('donutSvg').innerHTML = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18"/>` + paths;
+
+  document.getElementById('donutSvg').innerHTML =
+    `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="18"/>` + paths;
+
   document.getElementById('donutLegend').innerHTML = estadoList.map(([est, cnt], i) => `
     <div class="legend-item">
-      <div class="legend-dot" style="background:${colors[i%colors.length]}"></div>
+      <div class="legend-dot" style="background:${colors[i % colors.length]}"></div>
       <span style="color:var(--gray)">${est}</span>
       <span style="margin-left:auto;font-family:'Space Mono',monospace;font-size:12px">${cnt}</span>
     </div>
@@ -1005,12 +1235,7 @@ function renderCharts() {
 // FILTERS & SEARCH
 // ============================================================
 function poblarFiltros() {
-  const munis = [...new Set(allData.map(r=>r.municipio))].sort();
-  const estds = [...new Set(allData.map(r=>r.estado))].sort();
-  const mSel = document.getElementById('filterMunicipio');
-  const eSel = document.getElementById('filterEstado');
-  munis.forEach(m => { const o=document.createElement('option'); o.value=m; o.textContent=m; mSel.appendChild(o); });
-  estds.forEach(e => { const o=document.createElement('option'); o.value=e; o.textContent=e; eSel.appendChild(o); });
+  reconstruirFiltros();
 }
 
 function limpiarFiltros() {
@@ -1024,6 +1249,7 @@ function filtrarTabla() {
   const q = document.getElementById('searchInput').value.toLowerCase();
   const muni = document.getElementById('filterMunicipio').value;
   const est = document.getElementById('filterEstado').value;
+
   let data = allData.filter(r => {
     if (currentTab === 'activos' && isBaja(r)) return false;
     if (currentTab === 'baja' && !isBaja(r)) return false;
@@ -1031,18 +1257,23 @@ function filtrarTabla() {
     if (currentTab === 'sinTel' && (isBaja(r) || effectiveTel(r))) return false;
     if (muni && r.municipio !== muni) return false;
     if (est && r.estado !== est) return false;
+
     if (q) {
       const haystack = [r.empresa, r.nombre, effectiveCorreo(r), r.municipio, r.estado, effectiveTel(r)].join(' ').toLowerCase();
       if (!haystack.includes(q)) return false;
     }
+
     return true;
   });
+
   if (currentSort.col) {
-    data.sort((a,b) => {
-      let av = a[currentSort.col]||'', bv = b[currentSort.col]||'';
-      return av.localeCompare(bv)*currentSort.dir;
+    data.sort((a, b) => {
+      const av = a[currentSort.col] || '';
+      const bv = b[currentSort.col] || '';
+      return av.localeCompare(bv) * currentSort.dir;
     });
   }
+
   filteredData = data;
   currentPage = 1;
   renderTable();
@@ -1050,9 +1281,10 @@ function filtrarTabla() {
 
 function switchTab(tab) {
   currentTab = tab;
-  document.querySelectorAll('.tab-btn').forEach((b,i)=>b.classList.remove('active'));
-  const tabs = ['todos','activos','baja','sinCorreo','sinTel'];
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const tabs = ['todos', 'activos', 'baja', 'sinCorreo', 'sinTel'];
   document.querySelectorAll('.tab-btn')[tabs.indexOf(tab)].classList.add('active');
+
   selectedIds.clear();
   actualizarBulkBar();
   filtrarTabla();
@@ -1060,34 +1292,42 @@ function switchTab(tab) {
 
 function sortTable(col) {
   if (currentSort.col === col) currentSort.dir *= -1;
-  else { currentSort.col = col; currentSort.dir = 1; }
+  else {
+    currentSort.col = col;
+    currentSort.dir = 1;
+  }
   filtrarTabla();
 }
 
 // ============================================================
-// RENDER TABLE
+// TABLE
 // ============================================================
 function renderTable() {
-  const start = (currentPage-1)*PAGE_SIZE;
-  const pageData = filteredData.slice(start, start+PAGE_SIZE);
+  const start = (currentPage - 1) * PAGE_SIZE;
+  const pageData = filteredData.slice(start, start + PAGE_SIZE);
   const tbody = document.getElementById('tableBody');
+
   tbody.innerHTML = pageData.map(r => {
     const baja = isBaja(r);
     const tel = effectiveTel(r);
     const correo = effectiveCorreo(r);
     const etapa = effectiveEtapa(r);
-    const sinTel = !tel || tel==='XXX' || tel==='.';
+
+    const sinTel = !tel || tel === 'XXX' || tel === '.';
     const sinCorreo = !correo;
     const noContacto = sinTel && sinCorreo;
+
     let pill = baja
       ? `<span class="status-pill pill-baja">⛔ Baja</span>`
       : noContacto
         ? `<span class="status-pill pill-sincontacto">⚠ Sin contacto</span>`
-        : (sinTel||sinCorreo)
+        : (sinTel || sinCorreo)
           ? `<span class="status-pill pill-pending">⚡ Incompleto</span>`
           : `<span class="status-pill pill-active">✔ Activo</span>`;
+
     const checked = selectedIds.has(r.id) ? 'checked' : '';
-    return `<tr class="${baja?'baja':''} ${selectedIds.has(r.id)?'selected':''}" id="row-${r.id}">
+
+    return `<tr class="${baja ? 'baja' : ''} ${selectedIds.has(r.id) ? 'selected' : ''}" id="row-${r.id}">
       <td><input type="checkbox" class="row-check" ${checked} onchange="toggleRow(${r.id},this)"></td>
       <td style="max-width:200px;overflow:hidden;text-overflow:ellipsis;font-weight:700;">${r.empresa}</td>
       <td>${r.estado}</td>
@@ -1109,34 +1349,41 @@ function renderTable() {
       </td>
     </tr>`;
   }).join('');
+
   renderPager();
   document.getElementById('checkAll').checked = false;
 }
 
 // ============================================================
-// PAGINATION
+// PAGER
 // ============================================================
 function renderPager() {
   const total = filteredData.length;
-  const pages = Math.ceil(total/PAGE_SIZE)||1;
-  const start = (currentPage-1)*PAGE_SIZE+1;
-  const end = Math.min(currentPage*PAGE_SIZE, total);
-  document.getElementById('pagerInfo').textContent = `Mostrando ${total?start:0}–${end} de ${total} registros`;
+  const pages = Math.ceil(total / PAGE_SIZE) || 1;
+  const start = (currentPage - 1) * PAGE_SIZE + 1;
+  const end = Math.min(currentPage * PAGE_SIZE, total);
+
+  document.getElementById('pagerInfo').textContent = `Mostrando ${total ? start : 0}–${end} de ${total} registros`;
+
   const btns = document.getElementById('pagerBtns');
-  let html = `<button class="pager-btn" onclick="goPage(${currentPage-1})" ${currentPage===1?'disabled':''}>‹</button>`;
-  for (let p=1; p<=pages; p++) {
-    if (pages>7 && Math.abs(p-currentPage)>2 && p!==1 && p!==pages) {
-      if (p===currentPage-3||p===currentPage+3) html += `<span style="color:var(--gray);padding:5px">…</span>`;
+  let html = `<button class="pager-btn" onclick="goPage(${currentPage - 1})" ${currentPage === 1 ? 'disabled' : ''}>‹</button>`;
+
+  for (let p = 1; p <= pages; p++) {
+    if (pages > 7 && Math.abs(p - currentPage) > 2 && p !== 1 && p !== pages) {
+      if (p === currentPage - 3 || p === currentPage + 3) {
+        html += `<span style="color:var(--gray);padding:5px">…</span>`;
+      }
       continue;
     }
-    html += `<button class="pager-btn ${p===currentPage?'active-page':''}" onclick="goPage(${p})">${p}</button>`;
+    html += `<button class="pager-btn ${p === currentPage ? 'active-page' : ''}" onclick="goPage(${p})">${p}</button>`;
   }
-  html += `<button class="pager-btn" onclick="goPage(${currentPage+1})" ${currentPage===pages?'disabled':''}>›</button>`;
+
+  html += `<button class="pager-btn" onclick="goPage(${currentPage + 1})" ${currentPage === pages ? 'disabled' : ''}>›</button>`;
   btns.innerHTML = html;
 }
 
 function goPage(p) {
-  const pages = Math.ceil(filteredData.length/PAGE_SIZE)||1;
+  const pages = Math.ceil(filteredData.length / PAGE_SIZE) || 1;
   currentPage = Math.max(1, Math.min(p, pages));
   renderTable();
 }
@@ -1147,19 +1394,24 @@ function goPage(p) {
 function toggleRow(id, cb) {
   if (cb.checked) selectedIds.add(id);
   else selectedIds.delete(id);
-  const row = document.getElementById('row-'+id);
+
+  const row = document.getElementById('row-' + id);
   if (row) row.classList.toggle('selected', cb.checked);
+
   actualizarBulkBar();
 }
+
 function toggleAll(cb) {
-  const start = (currentPage-1)*PAGE_SIZE;
-  filteredData.slice(start, start+PAGE_SIZE).forEach(r => {
+  const start = (currentPage - 1) * PAGE_SIZE;
+  filteredData.slice(start, start + PAGE_SIZE).forEach(r => {
     if (cb.checked) selectedIds.add(r.id);
     else selectedIds.delete(r.id);
   });
+
   renderTable();
   actualizarBulkBar();
 }
+
 function actualizarBulkBar() {
   const bar = document.getElementById('bulkBar');
   if (selectedIds.size > 0) {
@@ -1169,6 +1421,7 @@ function actualizarBulkBar() {
     bar.classList.remove('visible');
   }
 }
+
 function deseleccionarTodo() {
   selectedIds.clear();
   actualizarBulkBar();
@@ -1186,64 +1439,107 @@ function abrirBaja(id) {
   document.getElementById('notasBaja').value = '';
   document.getElementById('modalBaja').classList.add('open');
 }
+
 function cerrarModal() {
   document.getElementById('modalBaja').classList.remove('open');
   pendingBajaId = null;
 }
-function confirmarBaja() {
+
+async function confirmarBaja() {
   if (!pendingBajaId) return;
+
+  const row = getRow(pendingBajaId);
   const motivo = document.getElementById('motivoBaja').value;
   const notas = document.getElementById('notasBaja').value;
-  if (!estados[pendingBajaId]) estados[pendingBajaId] = {};
-  estados[pendingBajaId].baja = true;
-  estados[pendingBajaId].motivo = motivo;
-  estados[pendingBajaId].notas = notas;
-  save();
-  cerrarModal();
-  cerrarDetalle();
-  actualizarKPIs();
-  renderCharts();
-  filtrarTabla();
-  toast(`Prospecto dado de baja: ${motivo}`, true);
-}
-function reactivar(id) {
-  if (!estados[id]) estados[id] = {};
-  estados[id].baja = false;
-  save();
-  actualizarKPIs();
-  renderCharts();
-  filtrarTabla();
-  toast('Prospecto reactivado ✔');
+
+  try {
+    await postToAppsScript({
+      action: 'darBaja',
+      empresa: row.empresa,
+      nombre: row.nombre,
+      correo: row.correo,
+      telefono: row.telefono,
+      motivo,
+      notas
+    });
+
+    cerrarModal();
+    cerrarDetalle();
+    await recargarSheets();
+    toast(`Prospecto dado de baja: ${motivo}`, true);
+  } catch (error) {
+    toast(error.message || 'No se pudo dar de baja', true);
+  }
 }
 
-function bajaSeleccionados() {
-  if (!selectedIds.size) return;
-  selectedIds.forEach(id => {
-    if (!estados[id]) estados[id] = {};
-    estados[id].baja = true;
-    estados[id].motivo = 'Baja masiva';
-  });
-  save();
-  selectedIds.clear();
-  actualizarBulkBar();
-  actualizarKPIs();
-  renderCharts();
-  filtrarTabla();
-  toast('Prospectos dados de baja', true);
+async function reactivar(id) {
+  const row = getRow(id);
+
+  try {
+    await postToAppsScript({
+      action: 'reactivar',
+      empresa: row.empresa,
+      nombre: row.nombre,
+      correo: row.correo,
+      telefono: row.telefono
+    });
+
+    cerrarDetalle();
+    await recargarSheets();
+    toast('Prospecto reactivado ✔');
+  } catch (error) {
+    toast(error.message || 'No se pudo reactivar', true);
+  }
 }
-function reactivarSeleccionados() {
+
+async function bajaSeleccionados() {
   if (!selectedIds.size) return;
-  selectedIds.forEach(id => {
-    if (!estados[id]) estados[id] = {};
-    estados[id].baja = false;
-  });
-  save();
-  selectedIds.clear();
-  actualizarBulkBar();
-  actualizarKPIs();
-  renderCharts();
-  filtrarTabla();
-  toast('Prospectos reactivados ✔');
+
+  try {
+    for (const id of selectedIds) {
+      const row = getRow(id);
+      await postToAppsScript({
+        action: 'darBaja',
+        empresa: row.empresa,
+        nombre: row.nombre,
+        correo: row.correo,
+        telefono: row.telefono,
+        motivo: 'Baja masiva',
+        notas: ''
+      });
+    }
+
+    selectedIds.clear();
+    actualizarBulkBar();
+    await recargarSheets();
+    toast('Prospectos dados de baja', true);
+  } catch (error) {
+    toast(error.message || 'No se pudo completar la baja masiva', true);
+  }
+}
+
+async function reactivarSeleccionados() {
+  if (!selectedIds.size) return;
+
+  try {
+    for (const id of selectedIds) {
+      const row = getRow(id);
+      await postToAppsScript({
+        action: 'reactivar',
+        empresa: row.empresa,
+        nombre: row.nombre,
+        correo: row.correo,
+        telefono: row.telefono
+      });
+    }
+
+    selectedIds.clear();
+    actualizarBulkBar();
+    await recargarSheets();
+    toast('Prospectos reactivados ✔');
+  } catch (error) {
+    toast(error.message || 'No se pudo completar la reactivación masiva', true);
+  }
 }
 
 // ============================================================
@@ -1252,128 +1548,78 @@ function reactivarSeleccionados() {
 function abrirEditar(id) {
   pendingEditId = id;
   const r = getRow(id);
-  const e = getEstado(id);
-  document.getElementById('editTel').value = e.tel || r.telefono || '';
-  document.getElementById('editCorreo').value = e.correo || r.correo || '';
-  document.getElementById('editEtapa').value = e.etapa || r.etapa || '1-Primer contacto';
-  document.getElementById('editNotas').value = e.notas || '';
+
+  document.getElementById('editTel').value = r.telefono || '';
+  document.getElementById('editCorreo').value = r.correo || '';
+  document.getElementById('editEtapa').value = r.etapa || '1-Primer contacto';
+  document.getElementById('editNotas').value = r.observaciones || '';
   document.getElementById('modalEditar').classList.add('open');
 }
+
 function cerrarModalEditar() {
   document.getElementById('modalEditar').classList.remove('open');
   pendingEditId = null;
 }
-function confirmarEditar() {
+
+async function confirmarEditar() {
   if (!pendingEditId) return;
-  if (!estados[pendingEditId]) estados[pendingEditId] = {};
-  estados[pendingEditId].tel = document.getElementById('editTel').value;
-  estados[pendingEditId].correo = document.getElementById('editCorreo').value;
-  estados[pendingEditId].etapa = document.getElementById('editEtapa').value;
-  estados[pendingEditId].notas = document.getElementById('editNotas').value;
-  save();
-  cerrarModalEditar();
-  cerrarDetalle();
-  actualizarKPIs();
-  renderCharts();
-  filtrarTabla();
-  toast('Cambios guardados ✔');
+
+  const row = getRow(pendingEditId);
+  const telefono = document.getElementById('editTel').value.trim();
+  const correo = document.getElementById('editCorreo').value.trim();
+  const etapa = document.getElementById('editEtapa').value;
+  const notas = document.getElementById('editNotas').value.trim();
+
+  try {
+    await postToAppsScript({
+      action: 'editar',
+      original: {
+        empresa: row.empresa,
+        nombre: row.nombre,
+        correo: row.correo,
+        telefono: row.telefono
+      },
+      telefono,
+      correo,
+      etapa,
+      notas
+    });
+
+    cerrarModalEditar();
+    cerrarDetalle();
+    await recargarSheets();
+    toast('Cambios guardados ✔');
+  } catch (error) {
+    toast(error.message || 'No se pudo editar', true);
+  }
 }
 
 // ============================================================
-// DETAIL PANEL
-// ============================================================
-function verDetalle(id) {
-  const r = getRow(id);
-  const e = getEstado(id);
-  const baja = isBaja(r);
-  const fields = [
-    {label:'Empresa', val: r.empresa},
-    {label:'Estado', val: r.estado},
-    {label:'Municipio', val: r.municipio},
-    {label:'Nombre contacto', val: r.nombre},
-    {label:'Teléfono', val: effectiveTel(r)||'<span class="no-data">Sin teléfono</span>'},
-    {label:'Correo', val: effectiveCorreo(r)||'<span class="no-data">Sin correo</span>'},
-    {label:'Etapa', val: effectiveEtapa(r)||'—'},
-    {label:'Fuente BD', val: r.fuente},
-    {label:'Estatus', val: baja ? '<span class="status-pill pill-baja">⛔ Baja</span>' : '<span class="status-pill pill-active">✔ Activo</span>'},
-    {label:'Motivo de baja', val: e.motivo||'—'},
-    {label:'Notas', val: e.notas||'—'},
-  ];
-  document.getElementById('detailGrid').innerHTML = fields.map(f=>`
-    <div class="detail-field">
-      <label>${f.label}</label>
-      <span>${f.val}</span>
-    </div>
-  `).join('');
-  document.getElementById('detailActions').innerHTML = `
-    <button class="btn btn-warning btn-sm" onclick="abrirEditar(${id})">✏ Editar</button>
-    ${baja
-      ? `<button class="btn btn-success btn-sm" onclick="reactivar(${id})">✔ Reactivar</button>`
-      : `<button class="btn btn-danger btn-sm" onclick="abrirBaja(${id})">⛔ Dar de Baja</button>`
-    }
-  `;
-  document.getElementById('detailPanel').classList.add('open');
-  document.getElementById('detailPanel').scrollIntoView({behavior:'smooth',block:'nearest'});
-}
-function cerrarDetalle() {
-  document.getElementById('detailPanel').classList.remove('open');
-}
-
-// ============================================================
-// TOAST
-// ============================================================
-function toast(msg, danger=false) {
-  const div = document.createElement('div');
-  div.className = 'toast' + (danger?' danger':'');
-  div.textContent = msg;
-  document.getElementById('toastWrap').appendChild(div);
-  setTimeout(()=>div.remove(), 3100);
-}
-
-// ============================================================
-// EXPORT CSV
-// ============================================================
-function exportarCSV() {
-  const headers = ['ID','Empresa','Estado','Municipio','Nombre','Teléfono','Correo','Etapa','Estatus','Motivo Baja','Notas'];
-  const rows = filteredData.map(r => {
-    const e = getEstado(r.id);
-    return [
-      r.id, r.empresa, r.estado, r.municipio, r.nombre,
-      effectiveTel(r), effectiveCorreo(r), effectiveEtapa(r),
-      isBaja(r)?'Baja':'Activo', e.motivo||'', e.notas||''
-    ].map(v => `"${String(v).replace(/"/g,'""')}"`).join(',');
-  });
-  const csv = [headers.join(','), ...rows].join('\n');
-  const a = document.createElement('a');
-  a.href = 'data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent(csv);
-  a.download = 'prospeccion_cdmx_' + new Date().toISOString().slice(0,10) + '.csv';
-  a.click();
-  toast('CSV exportado ✔');
-}
-
-// Close modals clicking outside
-document.getElementById('modalBaja').addEventListener('click', function(e){ if(e.target===this) cerrarModal(); });
-document.getElementById('modalEditar').addEventListener('click', function(e){ if(e.target===this) cerrarModalEditar(); });
-document.getElementById('modalAnadir').addEventListener('click', function(e){ if(e.target===this) cerrarAnadir(); });
-
-// ============================================================
-// AÑADIR EMPRESA
+// AÑADIR
 // ============================================================
 function abrirAnadir() {
-  ['newEmpresa','newEstado','newMunicipio','newNombre','newTel','newCorreo','newNotas'].forEach(id => document.getElementById(id).value = '');
+  ['newEmpresa','newEstado','newMunicipio','newNombre','newTel','newCorreo','newNotas'].forEach(id => {
+    document.getElementById(id).value = '';
+  });
   document.getElementById('newEtapa').value = '';
   document.getElementById('newFuente').value = 'MANUAL';
   document.getElementById('modalAnadir').classList.add('open');
 }
+
 function cerrarAnadir() {
   document.getElementById('modalAnadir').classList.remove('open');
 }
-function confirmarAnadir() {
+
+async function confirmarAnadir() {
   const empresa = document.getElementById('newEmpresa').value.trim();
-  if (!empresa) { toast('El nombre de la empresa es obligatorio', true); return; }
-  const newId = Math.max(...allData.map(r=>r.id), 0) + 1;
-  const newRow = {
-    id: newId,
+
+  if (!empresa) {
+    toast('El nombre de la empresa es obligatorio', true);
+    return;
+  }
+
+  const payload = {
+    action: 'anadir',
     empresa: empresa.toUpperCase(),
     estado: (document.getElementById('newEstado').value.trim() || 'MEXICO').toUpperCase(),
     municipio: (document.getElementById('newMunicipio').value.trim() || '—').toUpperCase(),
@@ -1382,27 +1628,122 @@ function confirmarAnadir() {
     correo: document.getElementById('newCorreo').value.trim(),
     etapa: document.getElementById('newEtapa').value,
     fuente: (document.getElementById('newFuente').value.trim() || 'MANUAL').toUpperCase(),
+    notas: document.getElementById('newNotas').value.trim()
   };
-  const notas = document.getElementById('newNotas').value.trim();
-  allData.push(newRow);
-  if (notas) { if (!estados[newId]) estados[newId] = {}; estados[newId].notas = notas; }
-  save();
-  // Repopulate filters
-  const mSel = document.getElementById('filterMunicipio');
-  const eSel = document.getElementById('filterEstado');
-  const munis = [...new Set(allData.map(r=>r.municipio))].sort();
-  const estds = [...new Set(allData.map(r=>r.estado))].sort();
-  mSel.innerHTML = '<option value="">Todos los municipios</option>';
-  munis.forEach(m => { const o=document.createElement('option'); o.value=m; o.textContent=m; mSel.appendChild(o); });
-  eSel.innerHTML = '<option value="">Todos los estados</option>';
-  estds.forEach(e => { const o=document.createElement('option'); o.value=e; o.textContent=e; eSel.appendChild(o); });
-  cerrarAnadir();
-  actualizarKPIs();
-  renderCharts();
-  filtrarTabla();
-  toast(`Empresa "${newRow.empresa}" agregada ✔`);
+
+  try {
+    await postToAppsScript(payload);
+    cerrarAnadir();
+    await recargarSheets();
+    toast(`Empresa "${payload.empresa}" agregada ✔`);
+  } catch (error) {
+    toast(error.message || 'No se pudo agregar la empresa', true);
+  }
 }
 
+// ============================================================
+// DETAIL
+// ============================================================
+function verDetalle(id) {
+  const r = getRow(id);
+  const baja = isBaja(r);
+
+  const fields = [
+    {label:'Empresa', val: r.empresa},
+    {label:'Estado', val: r.estado},
+    {label:'Municipio', val: r.municipio},
+    {label:'Nombre contacto', val: r.nombre},
+    {label:'Teléfono', val: effectiveTel(r) || '<span class="no-data">Sin teléfono</span>'},
+    {label:'Correo', val: effectiveCorreo(r) || '<span class="no-data">Sin correo</span>'},
+    {label:'Etapa', val: effectiveEtapa(r) || '—'},
+    {label:'Fuente BD', val: r.fuente},
+    {label:'Estatus', val: baja ? '<span class="status-pill pill-baja">⛔ Baja</span>' : '<span class="status-pill pill-active">✔ Activo</span>'},
+    {label:'Motivo de baja', val: r.motivoBaja || '—'},
+    {label:'Notas', val: r.observaciones || '—'},
+  ];
+
+  document.getElementById('detailGrid').innerHTML = fields.map(f => `
+    <div class="detail-field">
+      <label>${f.label}</label>
+      <span>${f.val}</span>
+    </div>
+  `).join('');
+
+  document.getElementById('detailActions').innerHTML = `
+    <button class="btn btn-warning btn-sm" onclick="abrirEditar(${id})">✏ Editar</button>
+    ${baja
+      ? `<button class="btn btn-success btn-sm" onclick="reactivar(${id})">✔ Reactivar</button>`
+      : `<button class="btn btn-danger btn-sm" onclick="abrirBaja(${id})">⛔ Dar de Baja</button>`
+    }
+  `;
+
+  document.getElementById('detailPanel').classList.add('open');
+  document.getElementById('detailPanel').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+}
+
+function cerrarDetalle() {
+  document.getElementById('detailPanel').classList.remove('open');
+}
+
+// ============================================================
+// TOAST
+// ============================================================
+function toast(msg, danger = false) {
+  const div = document.createElement('div');
+  div.className = 'toast' + (danger ? ' danger' : '');
+  div.textContent = msg;
+  document.getElementById('toastWrap').appendChild(div);
+  setTimeout(() => div.remove(), 3100);
+}
+
+// ============================================================
+// EXPORT CSV
+// ============================================================
+function exportarCSV() {
+  const headers = ['ID','Empresa','Estado','Municipio','Nombre','Teléfono','Correo','Etapa','Estatus','Motivo Baja','Notas'];
+
+  const rows = filteredData.map(r => {
+    return [
+      r.id,
+      r.empresa,
+      r.estado,
+      r.municipio,
+      r.nombre,
+      effectiveTel(r),
+      effectiveCorreo(r),
+      effectiveEtapa(r),
+      isBaja(r) ? 'Baja' : 'Activo',
+      r.motivoBaja || '',
+      r.observaciones || ''
+    ].map(v => `"${String(v).replace(/"/g, '""')}"`).join(',');
+  });
+
+  const csv = [headers.join(','), ...rows].join('\n');
+  const a = document.createElement('a');
+  a.href = 'data:text/csv;charset=utf-8,\uFEFF' + encodeURIComponent(csv);
+  a.download = 'prospeccion_cdmx_' + new Date().toISOString().slice(0, 10) + '.csv';
+  a.click();
+  toast('CSV exportado ✔');
+}
+
+// ============================================================
+// CLOSE MODALS
+// ============================================================
+document.getElementById('modalBaja').addEventListener('click', function(e) {
+  if (e.target === this) cerrarModal();
+});
+
+document.getElementById('modalEditar').addEventListener('click', function(e) {
+  if (e.target === this) cerrarModalEditar();
+});
+
+document.getElementById('modalAnadir').addEventListener('click', function(e) {
+  if (e.target === this) cerrarAnadir();
+});
+
+// ============================================================
+// START
+// ============================================================
 init();
 </script>
 </body>
