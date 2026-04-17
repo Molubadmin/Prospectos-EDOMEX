@@ -1301,7 +1301,13 @@ function reconstruirFiltros() {
 
 function mapRowsFromSheet(rows) {
   const headers = rows[0].map(h => String(h).trim().toLowerCase());
-  const idx = k => headers.indexOf(k);
+  const idx = (...keys) => {
+    for (const key of keys) {
+      const i = headers.indexOf(key);
+      if (i !== -1) return i;
+    }
+    return -1;
+  };
 
   return rows.slice(1)
     .filter(r => r.some(c => String(c).trim()))
@@ -1311,15 +1317,15 @@ function mapRowsFromSheet(rows) {
       estado: String(r[idx('estado')] || '').trim(),
       municipio: String(r[idx('municipio')] || '').trim(),
       nombre: String(r[idx('nombre')] || '').trim(),
-      telefono: String(r[idx('telefono')] || '').trim(),
-      correo: String(r[idx('correo')] || '').trim(),
+      telefono: String(r[idx('telefono', 'teléfono', 'celular', 'telefono contacto', 'teléfono contacto')] || '').trim(),
+      correo: String(r[idx('correo', 'correo electrónico', 'email', 'e-mail')] || '').trim(),
       etapa: String(r[idx('etapa')] || '').trim(),
       fuente: String(r[idx('fuente')] || '').trim(),
       estatus: String(r[idx('estatus')] || '').trim(),
       motivoBaja: String(r[idx('motivo baja')] || '').trim(),
       fechaBaja: String(r[idx('fecha baja')] || '').trim(),
       observaciones: String(r[idx('observaciones')] || '').trim(),
-      ultimaActualizacion: String(r[idx('ultima actualización')] || '').trim()
+      ultimaActualizacion: String(r[idx('ultima actualización', 'ultima actualizacion')] || '').trim()
     }));
 }
 
@@ -2047,8 +2053,12 @@ async function guardarAsignadoEtapa() {
   const etapa = document.getElementById('drawerEtapa').value;
 
   try {
-    const resp = await fetch(`${APPS_SCRIPT_URL}?action=updateAsignadoEtapa&empresa=${encodeURIComponent(drawerEmpresaActual)}&asignado=${encodeURIComponent(asignado)}&etapa=${encodeURIComponent(etapa)}`);
-    const data = await resp.json();
+    const data = await postToAppsScript({
+      action: 'updateAsignadoEtapa',
+      empresa: drawerEmpresaActual,
+      asignado,
+      etapa
+    });
 
     if (data.ok) {
       toast('Asignado y etapa guardados ✔');
@@ -2057,7 +2067,7 @@ async function guardarAsignadoEtapa() {
       toast(data.error || 'Error al guardar', true);
     }
   } catch (e) {
-    toast('Error al guardar', true);
+    toast(e.message || 'Error al guardar', true);
   }
 }
 
@@ -2073,8 +2083,12 @@ async function agregarNota() {
   }
 
   try {
-    const resp = await fetch(`${APPS_SCRIPT_URL}?action=addNota&empresa=${encodeURIComponent(drawerEmpresaActual)}&nota=${encodeURIComponent(nota)}&usuario=${encodeURIComponent(usuario)}`);
-    const data = await resp.json();
+    const data = await postToAppsScript({
+      action: 'addNota',
+      empresa: drawerEmpresaActual,
+      nota,
+      usuario
+    });
 
     if (data.ok) {
       document.getElementById('nuevaNota').value = '';
@@ -2085,7 +2099,7 @@ async function agregarNota() {
       toast(data.error || 'Error al agregar nota', true);
     }
   } catch (e) {
-    toast('Error al agregar nota', true);
+    toast(e.message || 'Error al agregar nota', true);
   }
 }
 
@@ -2101,8 +2115,12 @@ async function agregarArchivo() {
   }
 
   try {
-    const resp = await fetch(`${APPS_SCRIPT_URL}?action=addArchivo&empresa=${encodeURIComponent(drawerEmpresaActual)}&nombre=${encodeURIComponent(nombre)}&url=${encodeURIComponent(url)}`);
-    const data = await resp.json();
+    const data = await postToAppsScript({
+      action: 'addArchivo',
+      empresa: drawerEmpresaActual,
+      nombre,
+      url
+    });
 
     if (data.ok) {
       document.getElementById('nuevoArchivoNombre').value = '';
@@ -2114,7 +2132,7 @@ async function agregarArchivo() {
       toast(data.error || 'Error al agregar archivo', true);
     }
   } catch (e) {
-    toast('Error al agregar archivo', true);
+    toast(e.message || 'Error al agregar archivo', true);
   }
 }
 
