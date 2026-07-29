@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CRM Prospección CDMX</title>
+<title>CRM Prospección</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rajdhani:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -13,9 +13,9 @@
     --blue-dark: #0000B0;
     --blue-glow: rgba(0,0,250,0.25);
     --blue-faint: rgba(0,0,250,0.07);
-    --red: #FA0028;
-    --yellow: #FFD600;
-    --green: #00C96E;
+    --red: #000000;
+    --yellow: #000000;
+    --green: #0000FA;
     --gray: #3D4354;
     --gray-light: #E8EAEF;
     --gray-dark: #1A1C24;
@@ -894,6 +894,41 @@
     outline: none;
   }
 
+  .report-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  .report-summary {
+    background: rgba(0,0,250,0.06);
+    border: 1px solid rgba(0,0,250,0.2);
+    border-radius: 6px;
+    padding: 12px 14px;
+    margin: 14px 0;
+    font-size: 13px;
+    color: var(--gray);
+  }
+
+  .file-drop {
+    background: rgba(0,201,110,0.06);
+    border: 1px dashed rgba(0,201,110,0.55);
+    border-radius: 6px;
+    padding: 10px;
+  }
+
+  .file-drop input[type="file"] {
+    background: #fff;
+    border: none;
+    padding: 8px 0;
+  }
+
+  .mobile-actions {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
   @media (max-width:900px) {
     .kpi-grid { grid-template-columns: repeat(2,1fr); }
     .charts-row { grid-template-columns: 1fr; }
@@ -901,6 +936,233 @@
     .drawer {
       width: 100%;
       right: -100%;
+    }
+  }
+
+  @media (max-width:640px) {
+    .topbar {
+      height: auto;
+      padding: 12px 14px;
+      align-items: flex-start;
+      gap: 10px;
+      flex-direction: column;
+    }
+    .topbar-logo {
+      font-size: 22px;
+      letter-spacing: 2px;
+      flex-wrap: wrap;
+    }
+    .topbar-right,
+    .toolbar,
+    .mobile-actions,
+    .modal-actions {
+      width: 100%;
+    }
+    .topbar-right {
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+    .main { padding: 16px; }
+    .kpi-grid { grid-template-columns: 1fr; }
+    .detail-grid,
+    .report-grid,
+    .modal div[style*="grid-template-columns"] {
+      grid-template-columns: 1fr !important;
+    }
+    .btn {
+      justify-content: center;
+      min-height: 38px;
+    }
+    .drawer-field-row {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .drawer-field-row label { width: auto; }
+    td { white-space: normal; }
+  }
+
+  /* Estilo ejecutivo general */
+  :root {
+    --blue: #0000FA;
+    --black: #000000;
+    --white: #FFFFFF;
+    --blue-dark: #0000B0;
+    --blue-glow: rgba(0,0,250,0.16);
+    --blue-faint: rgba(0,0,250,0.08);
+    --red: #000000;
+    --yellow: #000000;
+    --green: #0000FA;
+    --gray: #4A4A4A;
+    --gray-light: #E6E6E6;
+    --gray-dark: #000000;
+  }
+
+  body {
+    background: #FFFFFF;
+    color: #000000;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  body::before { display: none; }
+
+  .gear-spin { animation: none; }
+  .topbar-logo svg { display: none; }
+
+  .topbar {
+    background: #FFFFFF;
+    border-bottom: 2px solid #000000;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    height: 68px;
+  }
+
+  .topbar-logo {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    letter-spacing: 0;
+    color: #000000;
+  }
+
+  .topbar-logo span { color: var(--blue); }
+  .topbar-badge { display: none; }
+
+  .topbar-date,
+  .section-title,
+  th,
+  .pager-btn,
+  .drawer-section-title,
+  .nota-meta,
+  .bar-val,
+  .chart-title {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0;
+  }
+
+  .section-title {
+    color: #000000;
+    font-size: 13px;
+    font-weight: 800;
+    text-transform: uppercase;
+  }
+
+  .kpi-card,
+  .chart-card,
+  .detail-panel,
+  .drawer-section {
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  .kpi-card:hover {
+    border-color: #0000FA;
+    transform: none;
+  }
+
+  .kpi-card::after { height: 3px; }
+
+  .kpi-val {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 34px;
+    font-weight: 800;
+    color: #000000;
+  }
+
+  .tabs {
+    background: #FFFFFF;
+    border: 1px solid #000000;
+    border-radius: 8px;
+    padding: 4px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+
+  .tab-btn {
+    font-family: Arial, Helvetica, sans-serif;
+    border-bottom: none;
+    border-radius: 6px;
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .tab-btn.active {
+    background: rgba(0,0,250,0.08);
+    color: var(--blue);
+  }
+
+  .btn,
+  select.filter-sel,
+  .search-input,
+  select.modal-sel,
+  textarea.modal-ta,
+  input.modal-sel,
+  .drawer-field-row select,
+  .drawer-field-row input,
+  .nota-form textarea,
+  .nota-form input {
+    font-family: Arial, Helvetica, sans-serif;
+    border-radius: 6px;
+    letter-spacing: 0;
+  }
+
+  .btn {
+    text-transform: none;
+    font-weight: 700;
+  }
+
+  .table-wrap {
+    background: #FFFFFF;
+    border-color: #000000;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  }
+
+  thead tr { background: #FFFFFF; }
+
+  th {
+    color: #0000FA;
+    font-weight: 800;
+  }
+
+  tbody tr:hover { background: rgba(0,0,250,0.06); }
+
+  .drawer-header {
+    background: #000000;
+  }
+
+  .drawer-header h3,
+  .modal h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    letter-spacing: 0;
+    font-weight: 800;
+  }
+
+  .modal {
+    border-color: #000000;
+    box-shadow: 0 24px 70px rgba(0,0,0,0.22);
+  }
+
+  @media (max-width:640px) {
+    .topbar {
+      height: auto;
+      padding: 12px 14px;
+      align-items: flex-start;
+      gap: 10px;
+      flex-direction: column;
+    }
+
+    .topbar-logo {
+      font-size: 18px;
+      width: 100%;
+    }
+
+    .topbar-right {
+      width: 100%;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .topbar-right .btn {
+      flex: 1 1 130px;
     }
   }
 </style>
@@ -913,10 +1175,10 @@
       <path d="M12 15.5A3.5 3.5 0 0 1 8.5 12 3.5 3.5 0 0 1 12 8.5a3.5 3.5 0 0 1 3.5 3.5 3.5 3.5 0 0 1-3.5 3.5m7.43-2.92c.04-.34.07-.69.07-1.08s-.03-.74-.07-1.08l2.32-1.81c.21-.16.27-.45.13-.68l-2.2-3.81c-.13-.23-.42-.31-.65-.23l-2.74 1.1c-.57-.44-1.17-.81-1.84-1.08l-.42-2.92A.5.5 0 0 0 14 2h-4a.5.5 0 0 0-.5.42l-.42 2.92c-.67.27-1.27.64-1.84 1.08L4.5 5.33c-.23-.08-.52 0-.65.23L1.65 9.37c-.14.23-.08.52.13.68l2.32 1.81C4.03 12.26 4 12.61 4 13s.03.74.07 1.08L1.78 15.9c-.21.16-.27.45-.13.68l2.2 3.81c.13.23.42.31.65.23l2.74-1.1c.57.44 1.17.81 1.84 1.08l.42 2.92c.08.42.42.48.5.48h4c.08 0 .42-.06.5-.48l.42-2.92c.67-.27 1.27-.64 1.84-1.08l2.74 1.1c.23.08.52 0 .65-.23l2.2-3.81c.14-.23.08-.52-.13-.68l-2.32-1.81z"/>
     </svg>
     <span>CRM</span> PROSPECCIÓN
-    <div class="topbar-badge">CDMX · EDO. MEX</div>
   </div>
   <div class="topbar-right">
     <div class="topbar-date" id="topbarDate"></div>
+    <button class="btn btn-success btn-sm" onclick="abrirInforme()">Informe gerencia</button>
     <button class="btn btn-ghost btn-sm" onclick="recargarSheets()" title="Recargar datos de Google Sheets">🔄 Actualizar</button>
     <button class="btn btn-primary btn-sm" onclick="exportarCSV()">⬇ Exportar CSV</button>
   </div>
@@ -1104,7 +1366,7 @@
       </div>
       <div class="modal-info">
         <label>Estado</label>
-        <input type="text" class="modal-sel" id="newEstado" style="width:100%" placeholder="Ej: MEXICO, CDMX">
+        <input type="text" class="modal-sel" id="newEstado" style="width:100%" placeholder="Ej: Mexico, Nuevo Leon">
       </div>
       <div class="modal-info">
         <label>Municipio</label>
@@ -1148,6 +1410,57 @@
     <div class="modal-actions">
       <button class="btn btn-ghost" onclick="cerrarAnadir()">Cancelar</button>
       <button class="btn btn-primary" onclick="confirmarAnadir()">＋ Agregar Empresa</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modalInforme">
+  <div class="modal" style="max-width:680px;">
+    <h2 style="color:var(--blue);">INFORME DE GERENCIA</h2>
+    <p>Filtra la prospeccion por encargado, empresa y periodo para descargar un informe de avances.</p>
+    <div class="report-grid">
+      <div class="modal-info">
+        <label>Encargado de atender</label>
+        <select class="modal-sel" id="reportResponsable">
+          <option value="">Todos los encargados</option>
+        </select>
+      </div>
+      <div class="modal-info">
+        <label>Empresa</label>
+        <select class="modal-sel" id="reportEmpresa">
+          <option value="">Todas las empresas</option>
+        </select>
+      </div>
+      <div class="modal-info">
+        <label>Periodo</label>
+        <select class="modal-sel" id="reportPeriodo" onchange="aplicarPeriodoInforme()">
+          <option value="semana">Esta semana</option>
+          <option value="quincena">Esta quincena</option>
+          <option value="mes">Este mes</option>
+          <option value="anio">Este año</option>
+          <option value="personalizado">Personalizado</option>
+        </select>
+      </div>
+      <div class="modal-info">
+        <label>Formato del informe</label>
+        <select class="modal-sel" id="reportFormato">
+          <option value="xlsx">Excel formal</option>
+          <option value="pdf">PDF formal</option>
+        </select>
+      </div>
+      <div class="modal-info">
+        <label>Desde</label>
+        <input type="date" class="modal-sel" id="reportDesde">
+      </div>
+      <div class="modal-info">
+        <label>Hasta</label>
+        <input type="date" class="modal-sel" id="reportHasta">
+      </div>
+    </div>
+    <div class="report-summary" id="reportResumen">Listo para generar informe formal con logo MOLUB.</div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="cerrarInforme()">Cancelar</button>
+      <button class="btn btn-primary" onclick="descargarInforme()">Descargar informe</button>
     </div>
   </div>
 </div>
@@ -1213,6 +1526,10 @@
         <div class="nota-form">
           <input type="text" id="nuevoArchivoNombre" placeholder="Nombre del archivo (ej: Cotización Mayo)">
           <input type="text" id="nuevoArchivoURL" placeholder="URL del archivo (Google Drive, etc.)">
+          <div class="file-drop">
+            <input type="file" id="nuevoArchivoFile" accept="image/*,.pdf,.doc,.docx,.xls,.xlsx,.csv">
+          </div>
+          <button class="btn btn-primary btn-sm" onclick="subirArchivoDrive()">Subir archivo o imagen</button>
           <button class="btn btn-success btn-sm" onclick="agregarArchivo()">＋ Agregar Archivo</button>
         </div>
       </div>
@@ -1252,6 +1569,33 @@ function escapeHtml(value) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
+}
+
+function toInputDate(date) {
+  return date.toISOString().slice(0, 10);
+}
+
+function downloadTextFile(filename, content, mime = 'text/csv;charset=utf-8') {
+  const blob = new Blob(['\uFEFF' + content], { type: mime });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = filename;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function csvEscape(value) {
+  return `"${String(value ?? '').replace(/"/g, '""')}"`;
+}
+
+function fileToBase64(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).split(',')[1] || '');
+    reader.onerror = () => reject(new Error('No se pudo leer el archivo'));
+    reader.readAsDataURL(file);
+  });
 }
 
 async function parseResponseAsJson(resp) {
@@ -1336,6 +1680,38 @@ function reconstruirFiltros() {
 
   if (munis.includes(municipioActual)) mSel.value = municipioActual;
   if (estds.includes(estadoActual)) eSel.value = estadoActual;
+  reconstruirFiltrosInforme();
+}
+
+function reconstruirFiltrosInforme() {
+  const responsableSel = document.getElementById('reportResponsable');
+  const empresaSel = document.getElementById('reportEmpresa');
+  if (!responsableSel || !empresaSel) return;
+
+  const responsableActual = responsableSel.value;
+  const empresaActual = empresaSel.value;
+  const responsables = [...new Set(allData.map(r => r.asignado).filter(Boolean))].sort();
+  const empresas = [...new Set(allData.map(r => r.empresa).filter(Boolean))].sort();
+
+  responsableSel.innerHTML = '<option value="">Todos los encargados</option>';
+  empresaSel.innerHTML = '<option value="">Todas las empresas</option>';
+
+  responsables.forEach(nombre => {
+    const option = document.createElement('option');
+    option.value = nombre;
+    option.textContent = nombre;
+    responsableSel.appendChild(option);
+  });
+
+  empresas.forEach(nombre => {
+    const option = document.createElement('option');
+    option.value = nombre;
+    option.textContent = nombre;
+    empresaSel.appendChild(option);
+  });
+
+  if (responsables.includes(responsableActual)) responsableSel.value = responsableActual;
+  if (empresas.includes(empresaActual)) empresaSel.value = empresaActual;
 }
 
 function mapRowsFromSheet(rows) {
@@ -1543,7 +1919,7 @@ function renderCharts() {
   });
 
   const estadoList = Object.entries(estadoMap).sort((a, b) => b[1] - a[1]);
-  const colors = ['#0000FA', '#00C96E', '#FFD600', '#FA0028', '#9099AA'];
+  const colors = ['#0000FA', '#000000', '#4A4A4A'];
   const totalD = activos.length || 1;
   let offset = 0;
   const rr = 40, cx = 60, cy = 60;
@@ -2042,6 +2418,7 @@ async function abrirDrawer(id) {
   document.getElementById('nuevaNotaUsuario').value = '';
   document.getElementById('nuevoArchivoNombre').value = '';
   document.getElementById('nuevoArchivoURL').value = '';
+  document.getElementById('nuevoArchivoFile').value = '';
 
   document.getElementById('drawerOverlay').classList.add('open');
   document.getElementById('drawerPanel').classList.add('open');
@@ -2204,6 +2581,42 @@ async function agregarArchivo() {
   }
 }
 
+async function subirArchivoDrive() {
+  if (!drawerEmpresaActual) return;
+
+  const input = document.getElementById('nuevoArchivoFile');
+  const file = input.files && input.files[0];
+  const nombreManual = document.getElementById('nuevoArchivoNombre').value.trim();
+
+  if (!file) {
+    toast('Selecciona un archivo o imagen primero', true);
+    return;
+  }
+
+  try {
+    toast('Subiendo evidencia a Drive...');
+    const fileData = await fileToBase64(file);
+    await postToAppsScript({
+      action: 'uploadArchivo',
+      empresa: drawerEmpresaActual,
+      nombre: nombreManual || file.name,
+      fileName: file.name,
+      mimeType: file.type || 'application/octet-stream',
+      fileData
+    });
+
+    document.getElementById('nuevoArchivoNombre').value = '';
+    document.getElementById('nuevoArchivoURL').value = '';
+    input.value = '';
+    toast('Evidencia subida y notificada');
+
+    const archivos = await getFromAppsScript('getArchivos', { empresa: drawerEmpresaActual });
+    renderDrawerArchivos(Array.isArray(archivos) ? archivos : []);
+  } catch (error) {
+    toast(error.message || 'No se pudo subir el archivo', true);
+  }
+}
+
 // ============================================================
 // TOAST
 // ============================================================
@@ -2213,6 +2626,73 @@ function toast(msg, danger = false) {
   div.textContent = msg;
   document.getElementById('toastWrap').appendChild(div);
   setTimeout(() => div.remove(), 3100);
+}
+
+// ============================================================
+// INFORME GERENCIA
+// ============================================================
+function abrirInforme() {
+  reconstruirFiltrosInforme();
+  aplicarPeriodoInforme();
+  document.getElementById('modalInforme').classList.add('open');
+}
+
+function cerrarInforme() {
+  document.getElementById('modalInforme').classList.remove('open');
+}
+
+function aplicarPeriodoInforme() {
+  const periodo = document.getElementById('reportPeriodo').value;
+  const hoy = new Date();
+  const desde = new Date(hoy);
+  const hasta = new Date(hoy);
+
+  if (periodo === 'semana') {
+    const day = hoy.getDay() || 7;
+    desde.setDate(hoy.getDate() - day + 1);
+  } else if (periodo === 'quincena') {
+    desde.setDate(hoy.getDate() <= 15 ? 1 : 16);
+  } else if (periodo === 'mes') {
+    desde.setDate(1);
+  } else if (periodo === 'anio') {
+    desde.setMonth(0, 1);
+  } else {
+    document.getElementById('reportResumen').textContent = 'Selecciona el rango personalizado para el informe.';
+    return;
+  }
+
+  document.getElementById('reportDesde').value = toInputDate(desde);
+  document.getElementById('reportHasta').value = toInputDate(hasta);
+  document.getElementById('reportResumen').textContent = 'El informe se descargara con los avances registrados en el periodo seleccionado.';
+}
+
+async function descargarInforme() {
+  const params = {
+    action: 'generarInforme',
+    responsable: document.getElementById('reportResponsable').value,
+    empresa: document.getElementById('reportEmpresa').value,
+    desde: document.getElementById('reportDesde').value,
+    hasta: document.getElementById('reportHasta').value,
+    formato: document.getElementById('reportFormato').value
+  };
+
+  try {
+    document.getElementById('reportResumen').textContent = 'Generando informe formal en Drive...';
+    const result = await postToAppsScript(params);
+
+    if (!result?.downloadUrl && !result?.url) {
+      throw new Error('No se recibio enlace del informe');
+    }
+
+    const link = result.downloadUrl || result.url;
+    window.open(link, '_blank', 'noopener,noreferrer');
+    document.getElementById('reportResumen').innerHTML =
+      `${result.rows || 0} avances incluidos. <a href="${escapeHtml(link)}" target="_blank" rel="noopener noreferrer">Abrir informe</a>`;
+    toast('Informe formal generado');
+  } catch (error) {
+    document.getElementById('reportResumen').textContent = 'No se pudo generar el informe.';
+    toast(error.message || 'No se pudo descargar el informe', true);
+  }
 }
 
 // ============================================================
@@ -2258,6 +2738,10 @@ document.getElementById('modalEditar').addEventListener('click', function(e) {
 
 document.getElementById('modalAnadir').addEventListener('click', function(e) {
   if (e.target === this) cerrarAnadir();
+});
+
+document.getElementById('modalInforme').addEventListener('click', function(e) {
+  if (e.target === this) cerrarInforme();
 });
 
 // ============================================================
