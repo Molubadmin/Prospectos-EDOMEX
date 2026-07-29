@@ -1165,6 +1165,168 @@
       flex: 1 1 130px;
     }
   }
+
+  /* Vista completa para detalle de cliente */
+  .drawer-overlay.open {
+    display: block;
+    background: rgba(0,0,0,0.56);
+    backdrop-filter: blur(2px);
+  }
+
+  .drawer {
+    top: 50%;
+    left: 50%;
+    right: auto;
+    width: min(1180px, calc(100vw - 36px));
+    height: min(88vh, 900px);
+    border: 2px solid #0000FA;
+    border-radius: 10px;
+    box-shadow: 0 28px 90px rgba(0,0,0,0.34);
+    transform: translate(-50%, -46%) scale(0.98);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    overflow: hidden;
+  }
+
+  .drawer.open {
+    right: auto;
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .drawer-header {
+    background: #000000;
+    border-bottom: 4px solid #0000FA;
+    padding: 20px 24px;
+  }
+
+  .drawer-header h3 {
+    max-width: none;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: clip;
+    font-size: 22px;
+    line-height: 1.15;
+  }
+
+  .drawer-close {
+    background: #FFFFFF;
+    color: #000000;
+    border: 1px solid #FFFFFF;
+    font-weight: 800;
+  }
+
+  .drawer-close:hover {
+    background: #0000FA;
+    color: #FFFFFF;
+  }
+
+  .drawer-body {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.82fr) minmax(430px, 1.35fr);
+    align-items: start;
+    gap: 18px;
+    padding: 22px;
+    overflow-y: auto;
+  }
+
+  .drawer-section:nth-child(2) {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+  }
+
+  .drawer-section:nth-child(3) {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .drawer-section {
+    border-color: #000000;
+  }
+
+  .drawer-section-title {
+    background: rgba(0,0,250,0.08);
+    border-bottom: 1px solid #000000;
+    color: #0000FA;
+    font-weight: 800;
+  }
+
+  #drawerNotasList {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nota-item {
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-left: 4px solid #0000FA;
+    padding: 12px 14px;
+  }
+
+  .nota-text {
+    font-size: 14px;
+    line-height: 1.45;
+  }
+
+  .archivo-item {
+    background: #FFFFFF;
+    border: 1px solid #D9D9D9;
+    border-left: 4px solid #0000FA;
+  }
+
+  .btn-warning {
+    background: #FFFFFF;
+    color: #0000FA;
+    border: 1px solid #0000FA;
+  }
+
+  .btn-warning:hover {
+    background: #0000FA;
+    color: #FFFFFF;
+  }
+
+  .btn-success {
+    background: #0000FA;
+    color: #FFFFFF;
+    border: 1px solid #0000FA;
+  }
+
+  .btn-success:hover {
+    background: #0000B0;
+    color: #FFFFFF;
+  }
+
+  .btn-danger {
+    background: #000000;
+    color: #FFFFFF;
+    border: 1px solid #000000;
+  }
+
+  .btn-danger:hover {
+    background: #FFFFFF;
+    color: #000000;
+  }
+
+  @media (max-width:900px) {
+    .drawer {
+      width: calc(100vw - 18px);
+      height: calc(100vh - 18px);
+    }
+
+    .drawer-body {
+      grid-template-columns: 1fr;
+      padding: 16px;
+    }
+
+    .drawer-section:nth-child(2),
+    .drawer-section:nth-child(3) {
+      grid-column: 1;
+      grid-row: auto;
+    }
+  }
 </style>
 </head>
 <body>
@@ -2422,6 +2584,7 @@ async function abrirDrawer(id) {
 
   document.getElementById('drawerOverlay').classList.add('open');
   document.getElementById('drawerPanel').classList.add('open');
+  document.body.style.overflow = 'hidden';
 
   try {
     const [detalle, notas, archivos] = await Promise.all([
@@ -2447,6 +2610,7 @@ async function abrirDrawer(id) {
 function cerrarDrawer() {
   document.getElementById('drawerOverlay').classList.remove('open');
   document.getElementById('drawerPanel').classList.remove('open');
+  document.body.style.overflow = '';
   drawerEmpresaActual = null;
 }
 
